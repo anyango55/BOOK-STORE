@@ -45,11 +45,11 @@ async function run() {
 
     })
 
-    app.get("/all-books", async (req, res) => {
-      const books = bookCollections.find();
-      const result = await books.toArray();
-      res.send(result);
-    })
+    // app.get("/all-books", async (req, res) => {
+    //   const books = bookCollections.find();
+    //   const result = await books.toArray();
+    //   res.send(result);
+    // })
 
 
    
@@ -79,6 +79,18 @@ async function run() {
       const filter = { _id: new ObjectId(id)};
       const result = await bookCollections.deleteOne(filter);
       res.send(result);
+    })
+
+    // find by category 
+    
+    app.get("/all-books",async (req, res) => {
+      let query = {};
+      if (req.query?.category) {
+        query = {category: req.query.category}
+      }
+      const result = await bookCollections.find(query).toArray();
+      res.send(result);
+      
     })
 
 
