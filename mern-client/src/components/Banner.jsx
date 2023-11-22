@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import BannerCard from '../landing/BannerCard'
 
 const Banner = () => {
